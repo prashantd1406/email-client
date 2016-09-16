@@ -1,0 +1,19 @@
+.mail-title, .mail-address, .mail-body, .mail-cc-address, {
+	margin-bottom: 10px;
+	border-bottom: 1px solid gray;
+}
+.mail-body {
+	border-bottom: none;
+}
+.mail-title {
+	font-size: 24px;
+	font-weight: 700;
+}
+.mail-address, .mail-cc-address {
+	font-size: 15px;
+	font-weight: 400;
+}
+.mail-address u, .mail-cc-address u {
+	color: #4D94B8;
+	cursor: pointer;
+}

@@ -1,0 +1,14 @@
+<div class="row mail-row" ng-repeat="mail in vm.mails">
+	<div class="col-md-1"> 
+		<input type="checkbox" ng-model="mail.checked" ng-checked="mail.checked"/> 
+	</div>
+	<div class="mail-summary" ng-click="vm.selectedItem(mail.id)">
+		<div class="col-md-3" style="font-weight:bold" ng-if="mail.flag === 'unread'">{{mail.from}}</div>
+		<div class="col-md-8" style="font-weight:bold" ng-if="mail.flag === 'unread'">{{mail.title}}</div>
+		<div class="col-md-3" ng-if="mail.flag === 'read'">{{mail.from}}</div>
+		<div class="col-md-3" ng-if="mail.flag === 'sent'">To: {{mail.to}}</div>
+		<div class="col-md-3 draft" ng-if="mail.flag === 'draft'">Draft</div>
+		<div class="col-md-8" ng-if="mail.flag === 'read' || mail.flag === 'sent' || mail.flag === 'draft'">{{mail.title}}</div>
+		<div class="col-md-8 draft" ng-if="mail.title === ''">(no subject)</div>
+	</div>
+</div>

@@ -1,0 +1,85 @@
+<div class="form-container">
+<h1 class="page-header">Login</h1>
+<form role="form" name="login_form" novalidate ng-submit="login.userAunthentication()">
+	<div class="form-group">
+		<label>Username</label>
+		<input type="text" name="username" ng-model="login.username" class="form-control" placeholder="enter username here" required/>
+		<div class="error-message" ng-show="login_form.username.$touched || login_form.$submitted">
+			<div ng-show="login_form.username.$error.required">* Plese enter username</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Password</label>
+		<input type="password" name="password" ng-model="login.password" class="form-control" placeholder="enter password here" required/>
+		<div class="error-message" ng-show="login_form.password.$touched || login_form.$submitted">
+			<div ng-show="login_form.password.$error.required">* Plese enter password</div>
+		</div>
+	</div>
+	<div class="login-error-message" ng-show="login.showErrorMessage">You have entererd either email or password incorrect!</div>	
+	<button type="submit" class="btn btn-primary">Login</button>
+	<span class="pull-right"><a href="#/signup">Create Account</a></span>
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- learning sass -->
+<!--<header>Mindigit</header>
+<hr/>
+<nav>
+	<ul>
+		<li> <a href="#"> Kishor </a> </li>
+		<li> <a href="#"> Raghava </a> </li>
+		<li> <a href="#"> Rajesh </a> </li>
+		<li> <a href="#"> Rajni </a> </li>
+		<li> <a href="#"> Prashant </a> </li>
+	</ul>
+</nav>
+<hr/>
+<div class="div1">
+	
+</div> -->

@@ -1,0 +1,58 @@
+<p> <a href="#/login">Login</a> </p>
+<div class="form-container">
+<h1 class="page-header">Create Your Account</h1>
+<form role="form" name="signup_form" novalidate ng-submit="signup.onSubmit()">
+	<div class="form-group username">
+		<label>Choose Username</label>
+		<input type="text" class="form-control" popover-placement="left" popover="You can use letters, numbers and periods." popover-trigger="focus" ng-model="signup.user.username" name="username" minlength="6" maxlength="20" ng-pattern="/^[a-z0-9]*$/" ng-blur="signup.checkUser()" ng-focus="signup.errormessage=''" required/>
+		<span id="atmindigit">@mindigit.com</span>
+		<div class="error-message" ng-show="signup_form.$submitted || signup_form.username.$touched">
+			<div ng-show="signup_form.username.$error.required">* You can't leave this empty</div>
+			<div ng-show="signup_form.username.$error.minlength || signup_form.username.$error.maxlength">Please use between 6 and 20 characters</div>
+			<div ng-show="signup_form.username.$error.pattern">Please use only letters (a-z) and numbers</div>
+			<div>{{signup.errormessage}}</div>
+		</div>		
+	</div>
+	
+	<!-- using password directive for password and confirm password -->
+	<password form="signup_form" password1="signup.user.password"> </password>
+
+	<div class="form-group">
+		<label>Gender</label>
+		<select class="selectpicker form-control" ng-model="signup.user.gender" name="gender" ng-options="gender for gender in signup.gender" required>
+			<option value="">I am...</option>
+		</select>
+		<div class="error-message" ng-show="signup_form.$submitted || signup_form.gender.$touched">
+			<div ng-show="signup_form.gender.$error.required">* Select Gender</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Country</label>
+		<select class="selectpicker form-control" ng-model="signup.user.country" ng-change="signup.getStates(signup.user.country)" name="country" ng-options="country for country in signup.countries" required>
+			<option value="">Select Your Country</option>
+		</select>
+		<div class="error-message" ng-show="signup_form.$submitted || signup_form.country.$touched">
+			<div ng-show="signup_form.country.$error.required">* Select Your Country</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>State</label>
+		<select class="selectpicker form-control" ng-model="signup.user.state" name="state" ng-options="state for state in signup.states" required>
+			<option value="">Select Your State</option>
+		</select>
+		<div class="error-message" ng-show="signup_form.$submitted || signup_form.state.$touched">
+			<div ng-show="signup_form.state.$error.required">* Select Your State</div>
+		</div>
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" ng-model="signup.user.checkTerms" ng-checked="signup.user.checkTerms" name="checkTerms" required=""/>
+			<span>I agree to <a href="#">Terms of Services</a></span>
+		</label>
+		<div class="error-message" ng-show="signup_form.$submitted">
+			<div ng-show="signup_form.checkTerms.$error.required">* You must agree to Mindigit's Terms of Service</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success">Create Your Account</button>
+</form>
+</div>

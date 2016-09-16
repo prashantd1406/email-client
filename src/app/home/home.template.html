@@ -1,0 +1,94 @@
+<div class="row header">
+	<header>
+		<span class="col-md-11">{{user.username}}@mindigit.com</span>
+		<a href="/#/login" class="pull-right col-md-1">Signout</a>
+	</header>
+</div>
+<div class="row toolbox">
+	<div class="message" ng-if="user.message"> 
+		<alert type="success" dismiss-on-timeout="2000" close="user.message = undefined">{{user.message}}</alert> 
+	</div>
+	<div class="mail-text col-md-2">Mails from <strong>{{user.mailType}}</strong></div>
+
+	<div class="col-md-8">
+		<div class="checkall-mails" ng-if="user.mails && user.mail === null">
+			<input type="checkbox" ng-model="user.masterCheckbox" ng-checked="user.masterCheckbox" ng-change="user.checkAllCheckboxes()"/>
+		</div>
+		<div class="mail-delete-tools" ng-show="user.showDeleteMail">
+			<span class="glyphicon glyphicon-trash delete-mail" tooltip="Delete" ng-click="user.deleteMails()"></span>
+		</div>
+		<div class="mail-delete-tools" ng-show="user.showDiscardDraft" ng-click="user.deleteMails()">
+			<span class="discard-draft">Discard Draft</span>
+		</div>
+		<div class="mail-delete-tools" ng-show="user.showDeleteForever" ng-click="user.deleteMails()">
+			<span class="delete-forever">Delete Forever</span>
+		</div>
+		<div class="mail-options" ng-if="user.mail !== null && user.mailType !== 'Drafts'">
+			<span class="glyphicon glyphicon-arrow-left" tooltip="Back to {{user.mailType}}" ng-click="user.getMails(user.mailType)"></span>
+			<span class="glyphicon glyphicon-share-alt" tooltip="Reply" ng-click="user.replyOrForward('reply')"></span>
+			<span class="glyphicon glyphicon-arrow-right" tooltip="Forward" ng-click="user.replyOrForward('forward')"></span>
+			<span class="glyphicon glyphicon-trash" tooltip="Delete" ng-click="user.deleteMail()"></span>
+		</div>
+	</div>
+
+	<div class="pagination-control pull-right col-md-1">
+		<pagination style="margin:0px;" ng-if="user.mail === null && user.mails" ng-model="user.currentPage" max-size="0" total-items="user.allMailsLength" items-per-page="user.mailsPerPage" previous-text="&#60;" next-text="&#62;" ng-change="user.getMails(user.mailType)"> </pagination>
+
+		<pagination style="margin:0px;" ng-if="user.mail !== null && user.mailType !== 'Drafts'" ng-model="user.currentMail" max-size="0"total-items="user.mails.length" items-per-page="1" previous-text="&#60;" next-text="&#62;"  ng-change="user.showMail(user.currentMail)"> </pagination>
+	</div>
+
+	<div class="mail-count pull-right col-md-1" ng-if="user.mails">
+		<span>
+			<strong>{{user.currentMail}} <span ng-if="user.mail === null">- {{user.lastMail}}</strong></span> of <strong> {{user.allMailsLength}} </strong>
+		</span>
+	</div>
+</div>
+<div class="row main-section">
+	<div class="col-md-2">
+		<div class="navigation">
+			<nav>
+				<p>
+					<button type="button" class="btn btn-danger compose-mail-button" ng-click="user.composeMail()">Compose
+					</button>
+				</p>
+				<ul>
+					<li> 
+						<a ui-sref="app.home({ type: 'Inbox' })" ng-click="user.getMails('Inbox')" ng-class="{ 'custom-style1': user.mailType === 'Inbox', 'custom-style2': user.mailType !== 'Inbox' }"> Inbox 
+						<span ng-if="user.unreadLength > 0">({{user.unreadLength}})</span> </a>
+					</li>
+					<li> 
+						<a ui-sref="app.home({ type: 'Sent' })" ng-click="user.getMails('Sent')" ng-class="{ 'custom-style1': user.mailType === 'Sent', 'custom-style2': user.mailType !== 'Sent' }"> Sent Mail </a>
+					</li>
+					<li> 
+						<a ui-sref="app.home({ type: 'Drafts' })" ng-click="user.getMails('Drafts')" ng-class="{ 'custom-style1': user.mailType === 'Drafts', 'custom-style2': user.mailType !== 'Drafts' }"> Drafts 
+						<span ng-if="user.draftLength > 0">({{user.draftLength}})</span> </a>
+					</li>
+					<li> 
+						<a ui-sref="app.home({ type: 'Trash' })" ng-click="user.getMails('Trash')" ng-class="{ 'custom-style1': user.mailType === 'Trash', 'custom-style2': user.mailType !== 'Trash' }"> Trash </a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="col-md-10 mail-view">
+		<div>
+			<mail-list mails="user.mails" ng-if="user.mail === null && user.mails.length !== 0" selected-mail-id="user.showMail(id)"> </mail-list>
+		</div>
+		<div>
+			<mail-view id="user.currentMail" mail-type="user.mailType" mail="user.mail" ng-if="user.mail !== null && user.mailType !== 'Drafts'"> </mail-view>
+		</div>
+		<div class="reply-forward" ng-show="user.replyForward">
+			<fieldset class="sendmail-content">
+				<div class="input-group">
+					<span class="input-group-addon">To</span>
+					<input type="email" class="form-control" ng-model="user.responseMail.to"/>
+				</div>
+				<div class="input-group sendmail-body">
+					<text-angular ng-model="user.responseMail.body"></text-angular>
+				</div>
+				<button class="btn btn-primary sendmail-btn" ng-click="user.send()">Send</button>
+				<button class="btn" ng-click="user.replyForward = false">Cancel</button>
+			</fieldset>
+		</div>
+	</div>
+</div>

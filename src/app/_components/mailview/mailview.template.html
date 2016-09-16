@@ -1,0 +1,12 @@
+<div class="mail-details">
+	<div class="mail-title">
+		<div> {{ vm.mail.title }} </div>
+	</div>
+	<div class="mail-address">
+		<div ng-if="vm.mail.flag === 'read' || vm.mail.flag === 'unread'"> From: <u>{{ vm.mail.from }}</u> </div>
+		<div ng-if="vm.mail.flag === 'sent'"> To: <u>{{ vm.mail.to }}</u> </div>
+	</div>
+	<div class="mail-cc-address" ng-if="vm.mail.cc !== null"> Cc: <u>{{ vm.mail.cc }}</u> </div>
+	<div></div>
+	<div class="mail-body" ng-bind-html="vm.mail.body"> </div>
+</div>

@@ -1,0 +1,37 @@
+.form-container{
+	margin:auto;
+	margin-bottom:20px;
+	width:50%;
+}
+h1{
+	text-align:center;
+	color:#555;
+}
+.username{
+	position:relative;
+}
+#atmindigit{
+	position:absolute;
+	top:32px;
+	right:10px;
+	color:#666;
+}
+.error-message{
+	color: #dd4b39;
+	font-weight:500;
+	margin-top:0.4em;
+}
+@media only screen and (max-device-width: 800px){
+	.form-container{
+		width:80%;
+	}
+	h1{
+		text-align:left;
+		font-size:24px;
+	}
+}
+@media only screen and (max-device-width: 320px){
+	h1{
+		font-size:20px;
+	}
+}

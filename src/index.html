@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<title>Email Client</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- start - favicons -->
+	<!-- end - favicons -->
+	<!-- build:css(src) assets/styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
+	<link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+	<link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) assets/styles/app.css -->
+	<link rel="stylesheet" href="/assets/styles/app.css" />
+    <!-- endbuild -->
+</head>
+<body ng-app="app" class="container-fluid">
+	<div ui-view="content"></div>
+	<!-- build:js(src) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+	<script src="bower_components/rangy/rangy-core.js"></script>
+	<script src="bower_components/rangy/rangy-classapplier.js"></script>
+	<script src="bower_components/rangy/rangy-highlighter.js"></script>
+	<script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+	<script src="bower_components/rangy/rangy-serializer.js"></script>
+	<script src="bower_components/rangy/rangy-textrange.js"></script>
+	<script src="bower_components/textAngular/dist/textAngular.js"></script>
+	<script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+	<script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+	<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+	<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
+	<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:js(src) scripts/app.js -->
+	<!-- injector:js -->
+	<script src="app/app.js"></script>
+	<script src="app/_components/components.module.js"></script>
+	<script src="app/_components/maillist/maillist.module.js"></script>
+	<script src="app/_components/mailview/mailview.module.js"></script>
+	<script src="app/_components/password/password.module.js"></script>
+	<script src="app/home/home.module.js"></script>
+	<script src="app/login/login.module.js"></script>
+	<script src="app/signup/signup.module.js"></script>
+	<script src="app/app.config.js"></script>
+	<script src="app/home/home.config.js"></script>
+	<script src="app/login/login.config.js"></script>
+	<script src="app/signup/signup.config.js"></script>
+	<script src="app/_components/mail/mail.service.js"></script>
+	<script src="app/_components/master/master.service.js"></script>
+	<script src="app/_components/user/user.service.js"></script>
+	<script src="app/_components/maillist/maillist.directive.js"></script>
+	<script src="app/_components/mailview/mailview.directive.js"></script>
+	<script src="app/_components/password/password.directive.js"></script>
+	<script src="app/home/home.controller.js"></script>
+	<script src="app/home/sendmail/sendmail.controller.js"></script>
+	<script src="app/login/login.controller.js"></script>
+	<script src="app/signup/signup.controller.js"></script>
+	<!-- endinjector -->
+	<!-- injector:mocks -->
+	<script src="mocks/backend.mock.js"></script>
+	<script src="mocks/_service-models/contacts.model.js"></script>
+	<script src="mocks/_service-models/countries.model.js"></script>
+	<script src="mocks/_service-models/mails.model.js"></script>
+	<script src="mocks/_service-models/states.model.js"></script>
+	<script src="mocks/_service-models/users.model.js"></script>
+	<!-- endinjector -->
+	<!-- endbuild -->
+</body>

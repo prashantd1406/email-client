@@ -1,0 +1,27 @@
+<div class="sendmail-dialog">
+	<div class="sendmail-header">
+		<span class="sendmail-title"> New Meassage </span>
+		<span class="sendmail-cancel pull-right"> <span class="glyphicon glyphicon-remove" ng-click="modal.draft()" tooltip="Save & Close"></span> </span>
+	</div>	
+	<div class="sendmail-content">
+		<div class="input-group">
+			<span class="input-group-addon">To</span>
+			<input type="email" class="form-control" ng-model="modal.mail.to" list="usernames" multiple/>
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">Cc</span>
+			<input type="email" class="form-control" ng-model="modal.mail.cc" list="usernames" multiple/>
+		</div>
+		<datalist id="usernames">
+			<option ng-repeat="username in modal.usernames" value="{{username}}@mindigit.com"/></option>
+		</datalist>
+		<div class="input-group">
+			<span class="input-group-addon">Subject</span>
+			<input type="text" class="form-control" ng-model="modal.mail.title"/>
+		</div>
+		<div class="input-group sendmail-body">
+			<text-angular classs="c1" ng-model="modal.mail.body"></text-angular>
+		</div>
+		<button class="btn btn-primary sendmail-btn" ng-click="modal.send()">Send</button>
+	</div>
+</div>
